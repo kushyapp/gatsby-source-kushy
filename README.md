@@ -2,6 +2,10 @@
 
 Source plugin for pulling a shop or brand's data into Gatsby from the [Kushy API](http://kushy.net).
 
+Add your shop or brand to the configuration file and Gatsby will import your profile data, menu, and all your reviews and photos into GraphQL. 
+
+Great for creating a website or landing page for a dispensary or brand.
+
 * Demo
 * Example site source code
 
@@ -18,6 +22,9 @@ Source plugin for pulling a shop or brand's data into Gatsby from the [Kushy API
         section: 'shops',
         // The slug of your shop/brand
         slug: 'chronic-pain-relief-center',
+        // This helps the source plugin use the Kushy API to find your shop
+        // e.g. http://api.kushy.net/v1/<section>/?filter[slug]=<slug>
+        // See Kushy API docs for more info on querying shop data
       },
     },
 ```
