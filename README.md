@@ -1,6 +1,6 @@
 # gatsby-source-kushy
 
-Source plugin for pulling data into Gatsby from the [Kushy API](http://kushy.net).
+Source plugin for pulling a shop or brand's data into Gatsby from the [Kushy API](http://kushy.net).
 
 * Demo
 * Example site source code
