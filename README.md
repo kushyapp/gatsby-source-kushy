@@ -38,7 +38,7 @@ The plugin creates an endpoint called `KushyPost` and `allKushyPost`. You query 
 
 All the parameters from the API are plugged into GraphQL, so if an API endpoint has a `avatar` property, you can query GraphQL for it.
 
-Here is a sample query for a shop:
+### Query your shop/brand
 
 ```graphql
 {
@@ -67,14 +67,125 @@ Here is a sample query for a shop:
 }
 ```
 
+### Query your reviews
+
+```graphql
+{
+  allKushyReview {
+    edges {
+      node{
+        id
+        status
+        post_id
+        user_id
+        rating
+        useful
+        dank
+        funny
+        review
+        created_at {
+					date
+        }
+        updated_at {
+          date
+        }
+        includes {
+					user {
+            id
+            name
+            username
+            avatar
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+### Query your menu
+
+```graphql
+{
+  allKushyMenu {
+    edges {
+      node{
+        id
+        product {
+          id
+          name
+          slug
+          categories
+          avatar
+          featured_img
+        }
+        pricing {
+          pricing_type
+          list_price
+          sale_price
+          half_gram
+          one_gram
+          two_grams
+          eighth_ounce
+          quarter_ounce
+          half_ounce
+          ounce
+          quarter_pound
+          half_pound
+          pound
+        }
+        cannabinoids {
+          thc
+          cbd
+          cbn
+        }
+      }
+    }
+  }
+}
+```
+
+### Query your photos
+
+```graphql
+{
+  allKushyPhoto {
+    edges {
+      node {
+        id
+        image
+        caption
+        user_id
+        post_id
+        featured
+        created_at{
+          date
+          timezone
+        }
+        updated_at{
+          date
+          timezone
+        }
+      }
+    }
+  }
+}
+```
+
 ## Todo
 
 * [✅] - Allow users to add a config for section and ID to load a specific shop/brand.
-* [] - Add endpoint for shop/brand menu (`KushyMenu` / `allKushyMenu`)
+* [✅] - Add endpoint for shop/brand menu (`KushyMenu` / `allKushyMenu`)
 * [] - Add endpoint for shop/brand photos (`KushyPhotos` / `allKushyPhotos`)
-* [] - Add endpoint for shop/brand reviews (`KushyReviews` / `allKushyReviews`)
+* [✅] - Add endpoint for shop/brand reviews (`KushyReviews` / `allKushyReviews`)
 
 ### Pending
 
 * [] - Create async function to load all pages from API, currently only loads first (see: [getPages()](https://github.com/gatsbyjs/gatsby/blob/master/packages/gatsby-source-wordpress/src/fetch.js#L334-L348))
 * [] - Create helper function to download all loaded media into cache (see: [downloadMediaFiles()](https://github.com/gatsbyjs/gatsby/blob/master/packages/gatsby-source-wordpress/src/normalize.js#L452))
+
+
+## Credits
+
+* [GatsbyJS](https://www.gatsbyjs.org/)
+* [GatsbyJS Source Plugin tutorial](https://www.gatsbyjs.org/docs/source-plugin-tutorial/)
